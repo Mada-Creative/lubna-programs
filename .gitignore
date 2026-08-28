@@ -1,0 +1,6 @@
+# Local Facilitator Guide (Contains sensitive scripts and session timelines)
+local-guide/
+
+# OS-specific files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة مراجعة المحتوى والتدقيق — د. لبنى كعبية</title>
+  <meta name="description" content="لوحة تدقيق ومراجعة التناقضات وخريطة المصادر والبيانات الناقصة في منصة د. لبنى كعبية.">
+  <meta name="robots" content="noindex,nofollow">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="site-header">
+    <div class="container navbar">
+      <div class="logo">
+        <a href="index.html" class="logo-text">د. لبنى كعبية</a>
+        <span class="logo-tagline">توجيه مهني • تربوي • نفسي • اجتماعي • إرشاد أسري</span>
+      </div>
+      
+      <button class="menu-toggle" id="menuToggle" aria-label="افتح قائمة التنقل" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <nav class="nav-links" id="navLinks" role="navigation" aria-label="التنقل الرئيسي">
+        <a href="index.html">الرئيسية</a>
+        <a href="index.html#catalog">الكتالوج</a>
+        <a href="index.html#about">عن د. لبنى</a>
+        <a href="index.html#contact">تواصل معنا</a>
+        <a href="review.html" class="active">لوحة المراجعة (Review)</a>
+      </nav>
+      <div class="nav-overlay" id="navOverlay"></div>
+    </div>
+  </header>
+
+  <main class="container review-dashboard">
+    <!-- Dashboard Header -->
+    <header class="review-dashboard-header">
+      <div>
+        <h1>لوحة المراجعة والتدقيق الفني</h1>
+        <p style="color: var(--color-text-muted); margin-bottom: 0;">بوابة التدقيق ومطابقة المحتوى مع المصادر الأصلية وتتبع معالجة الثغرات والبيانات الناقصة.</p>
+      </div>
+      
+      <!-- Interactive Public Mode Toggle -->
+      <div class="toggle-container">
+        <span style="font-family: var(--font-headings); font-size: 14px; font-weight: 600; color: var(--color-text);">معاينة المظهر العام للمدير (Public)</span>
+        <label class="switch" for="modePreviewToggle">
+          <input type="checkbox" id="modePreviewToggle" aria-label="تفعيل معاينة المظهر العام">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </header>
+
+    <!-- App mode reminder -->
+    <div class="alert alert-warning" id="reviewActiveAlert" style="margin-bottom: 32px;">
+      <h4>معاينة وضع المراجعة نشط حالياً</h4>
+      <p>يتم الآن عرض جميع العلامات والبنود المكررة أو القديمة. يمكنك تشغيل التبديل بالأعلى لإخفاء تفاصيل المراجعة ومعاينة الكتالوج كما يظهر للجهات والمؤسسات الخارجية.</p>
+    </div>
+
+    <!-- 1. Confirmation List Section -->
+    <section class="review-panel active" style="display: block; margin-bottom: 40px;">
+      <h3 class="mb-16">أشياء تحتاج تأكيد قبل النشر</h3>
+      <p class="mb-24">هذه النقاط والمسائل تم استخلاصها وتصنيفها من الملفات الأصلية وتحتاج إلى مراجعة واعتماد د. لبنى كعبية قبل النشر العام:</p>
+      
+      <div class="issue-list" id="reviewIssuesList">
+        <!-- populated dynamically by review.js -->
+      </div>
+    </section>
+
+    <!-- Collapsible Technical Sections -->
+    <div class="review-collapsible-container" style="margin-top: 32px; display: flex; flex-direction: column; gap: 24px;">
+      
+      <details class="review-details">
+        <summary>مصادر المحتوى</summary>
+        <div class="review-details-content">
+          <p class="mb-24">توضح هذه الخريطة العلاقة المباشرة بين ملفات المصدر الواردة والسجلات المستخرجة والمصنفة بقاعدة البيانات لضمان دقة النقل:</p>
+          <div id="sourceMapContainer">
+            <!-- populated dynamically by review.js -->
+          </div>
+        </div>
+      </details>
+
+      <details class="review-details">
+        <summary>بنك الأفكار والموضوعات</summary>
+        <div class="review-details-content">
+          <p class="mb-24">هذه المواضيع والمحاور مستخرجة من بنوك الأفكار الأصلية، وتُعرض هنا فقط للمراجعة وتطويرها لبرامج مستقلة مستقبلاً، ولا تظهر للجمهور العام:</p>
+          <div id="topicBankContainer">
+            <!-- populated dynamically by review.js -->
+          </div>
+        </div>
+      </details>
+
+      <details class="review-details">
+        <summary>مواد وبرامج قديمة تحتاج مراجعة</summary>
+        <div class="review-details-content">
+          <p class="mb-24">تعرض هذه البرامج تحت تصنيف "قديم" (Legacy) لتجنب خلطها بالبرامج الجديدة، ولا تُعرض أسعارها إلا بعد تأكيدات خطية:</p>
+          <div class="grid-layout" id="legacyProgramsContainer">
+            <!-- populated dynamically by review.js -->
+          </div>
+        </div>
+      </details>
+      
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-info">
+        <h3>د. لبنى كعبية</h3>
+        <p class="footer-tagline">توجيه مهني • تربوي • نفسي • اجتماعي • إرشاد أسري</p>
+      </div>
+      <div class="footer-contact">
+        <span id="footerContactsPlaceholder" style="color: var(--color-text-muted); font-size: 13px;">لوحة مراجعة وضبط المحتوى الداخلي</span>
+      </div>
+    </div>
+    <div class="container footer-copyright">
+      <p>&copy; <span id="currentYear"></span> د. لبنى كعبية. جميع الحقوق محفوظة.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/programs.js"></script>
+  <script src="assets/js/workshops.js"></script>
+  <script src="assets/js/source-bank.js"></script>
+  <script src="assets/js/legacy-programs.js"></script>
+  <script src="assets/js/review.js"></script>
+</body>
+</html>
