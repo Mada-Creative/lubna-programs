@@ -174,6 +174,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Helper to format visible category label
+  function formatCategoryLabel(category) {
+    if (category === "الشباب والفتيات") {
+      return "الشباب والفتيات (طلاب إعدادية وثانوية) – مراكز";
+    }
+    return category || "عام";
+  }
+
   // Generates semantic Card element
   function createCardElement(item) {
     const cardEl = document.createElement("article");
@@ -204,12 +212,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let typeLabel = "ورشة عمل";
     if (item.catalogType === "program") typeLabel = "برنامج متكامل";
     else if (item.catalogType === "series") typeLabel = "سلسلة لقاءات";
-    else if (item.catalogType === "lecture") typeLabel = "محاضرة";
+    else if (item.catalogType === "lecture" || (item.typeOriginal && item.typeOriginal.includes("محاضرة"))) typeLabel = "محاضرة";
     else if (item.catalogType === "legacy") typeLabel = "برنامج قديم (Legacy)";
     
     // Setup target URL based on catalogType
     let targetUrl = `program.html?id=${item.id}`;
-    if (item.catalogType === "workshop" || item.catalogType === "series" || item.catalogType === "lecture") {
+    if (item.catalogType === "workshop" || item.catalogType === "series" || item.catalogType === "lecture" || (item.typeOriginal && item.typeOriginal.includes("محاضرة"))) {
       targetUrl = `workshop.html?id=${item.id}`;
     }
     
@@ -219,11 +227,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Meetings & Duration string representation
     let meetingsText = item.meetings ? `${item.meetings} لقاءات` : null;
     let durationText = item.duration || null;
-    
-    // Conflict details check
-    if (item.id === "aware-mother-balanced-teen" && isReviewMode) {
-      durationText = "تناقض بالمدة (مراجعة)";
-    }
     
     let statsHTML = "";
     if (meetingsText || durationText) {
@@ -246,7 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="card-header">
           <div class="card-meta">
             <span class="card-type">${typeLabel}</span>
-            <span style="font-size: 11px; color: var(--color-text-muted); font-family: var(--font-headings); font-weight: 500;">${item.category || "عام"}</span>
+            <span style="font-size: 11px; color: var(--color-text-muted); font-family: var(--font-headings); font-weight: 500;">${formatCategoryLabel(item.category)}</span>
           </div>
           <h3 class="card-title">${item.title}</h3>
           <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px;">
@@ -270,7 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div style="flex-grow: 1;">
               <div class="card-meta">
                 <span class="card-type">${typeLabel}</span>
-                <span style="font-size: 11px; color: var(--color-text-muted); font-family: var(--font-headings); font-weight: 500;">${item.category || "عام"}</span>
+                <span style="font-size: 11px; color: var(--color-text-muted); font-family: var(--font-headings); font-weight: 500;">${formatCategoryLabel(item.category)}</span>
               </div>
               <h3 class="card-title">${item.title}</h3>
             </div>

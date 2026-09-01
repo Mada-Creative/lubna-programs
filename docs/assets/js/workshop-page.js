@@ -48,12 +48,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const badgesContainer = document.getElementById("workshopBadgesContainer");
   const headerImg = document.getElementById("detailHeaderImage");
   
+  const isLecture = workshop.catalogType === "lecture" || workshop.sourceType === "lecture" || (workshop.typeOriginal && workshop.typeOriginal.includes("محاضرة"));
+  
   if (titleEl) titleEl.textContent = workshop.title;
-  if (topicEl) topicEl.textContent = workshop.topic || "المحور: ورشة عمل تفاعلية";
+  if (topicEl) {
+    if (isLecture && workshop.goal) {
+      topicEl.style.display = "none";
+    } else {
+      topicEl.style.display = "block";
+      topicEl.textContent = workshop.topic || "المحور: ورشة عمل تفاعلية";
+    }
+  }
   
   let typeLabel = "ورشة عمل";
   if (workshop.catalogType === "series") typeLabel = "سلسلة لقاءات";
-  else if (workshop.catalogType === "lecture") typeLabel = "محاضرة";
+  else if (isLecture) typeLabel = "محاضرة";
   if (typeEl) typeEl.textContent = typeLabel;
 
   if (headerImg) {
@@ -138,15 +147,54 @@ document.addEventListener("DOMContentLoaded", () => {
     reviewNotesList.innerHTML = workshop.reviewNotes.map(note => `<li>${note}</li>`).join("");
   }
 
-  // 7. Render About Section with Latin word formatting
+  // 7. Render About / Topic Section with Latin word formatting
   const descEl = document.getElementById("workshopDescription");
   if (descEl) descEl.innerHTML = wrapLatinTerms(workshop.description || "لا يوجد وصف أو محاور مفصلة متوفرة حالياً.");
 
   // Dynamic About Section Heading
   const aboutHeading = document.getElementById("aboutHeading");
   if (aboutHeading) {
-    const isLecture = workshop.typeOriginal && (workshop.typeOriginal.includes("محاضرة") || workshop.sourceType === "lecture" || workshop.typeOriginal.includes("تدريب"));
-    aboutHeading.textContent = isLecture ? "حول المحاضرة" : "حول الورشة";
+    aboutHeading.textContent = isLecture ? "موضوع المحاضرة" : "حول الورشة";
+  }
+
+  // Goal Section
+  const goalSection = document.getElementById("goalSection");
+  const goalHeading = document.getElementById("goalHeading");
+  const goalEl = document.getElementById("workshopGoal");
+  if (goalSection && goalEl) {
+    if (workshop.goal) {
+      goalSection.style.display = "block";
+      if (goalHeading) goalHeading.textContent = isLecture ? "هدف المحاضرة" : "الهدف";
+      goalEl.innerHTML = wrapLatinTerms(workshop.goal);
+    } else {
+      goalSection.style.display = "none";
+    }
+  }
+
+  // Main Topics Section
+  const topicsSection = document.getElementById("topicsSection");
+  const topicsList = document.getElementById("topicsList");
+  if (topicsSection && topicsList) {
+    if (workshop.mainTopics && workshop.mainTopics.length > 0) {
+      topicsSection.style.display = "block";
+      topicsList.innerHTML = workshop.mainTopics.map(t => `<li>${wrapLatinTerms(t)}</li>`).join("");
+    } else {
+      topicsSection.style.display = "none";
+    }
+  }
+
+  // Student Activity Section
+  const activitySection = document.getElementById("activitySection");
+  const activityHeading = document.getElementById("activityHeading");
+  const activityEl = document.getElementById("workshopActivity");
+  if (activitySection && activityEl) {
+    if (workshop.studentActivity) {
+      activitySection.style.display = "block";
+      if (activityHeading) activityHeading.textContent = "النشاط مع الطلاب";
+      activityEl.innerHTML = wrapLatinTerms(workshop.studentActivity);
+    } else {
+      activitySection.style.display = "none";
+    }
   }
 
   // 8. Render Benefits Section with Latin word formatting

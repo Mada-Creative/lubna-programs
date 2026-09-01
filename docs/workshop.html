@@ -117,9 +117,29 @@
         <div class="detail-main">
           
           <!-- About Section -->
-          <section class="editorial-section" aria-labelledby="aboutHeading">
+          <section class="editorial-section" aria-labelledby="aboutHeading" id="aboutSection">
             <h3 id="aboutHeading">حول الورشة</h3>
             <p id="workshopDescription" style="font-size: 1.05rem; line-height: 1.8;">شرح تفصيلي للورشة...</p>
+          </section>
+
+          <!-- Goal Section (if present) -->
+          <section class="editorial-section editorial-section-border" aria-labelledby="goalHeading" id="goalSection" style="display: none;">
+            <h3 id="goalHeading">هدف المحاضرة</h3>
+            <p id="workshopGoal" style="font-size: 1.05rem; line-height: 1.8;"></p>
+          </section>
+
+          <!-- Main Topics Section (if present) -->
+          <section class="editorial-section editorial-section-border" aria-labelledby="topicsHeading" id="topicsSection" style="display: none;">
+            <h3 id="topicsHeading">المواضيع الرئيسية</h3>
+            <ol class="editorial-list" id="topicsList" style="list-style-type: decimal; padding-right: 20px; line-height: 1.8;">
+              <!-- Injected by workshop-page.js -->
+            </ol>
+          </section>
+
+          <!-- Student Activity Section (if present) -->
+          <section class="editorial-section editorial-section-border" aria-labelledby="activityHeading" id="activitySection" style="display: none;">
+            <h3 id="activityHeading">النشاط مع الطلاب</h3>
+            <p id="workshopActivity" style="font-size: 1.05rem; line-height: 1.8;"></p>
           </section>
 
           <!-- Benefits Section -->

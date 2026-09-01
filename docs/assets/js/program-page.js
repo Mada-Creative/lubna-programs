@@ -134,24 +134,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   
-  // Render Duration (specifically keep aware-mother-balanced-teen duration unresolved)
-  let resolvedDuration = program.duration || null;
-  if (program.id === "aware-mother-balanced-teen") {
-    resolvedDuration = null;
-  }
-  
+  // Render Duration
+  const resolvedDuration = program.duration || null;
   if (resolvedDuration) {
     if (metaDuration) metaDuration.textContent = resolvedDuration;
     if (durationCard) durationCard.style.display = "flex";
   } else {
     if (isReviewMode) {
-      if (metaDuration) {
-        if (program.id === "aware-mother-balanced-teen") {
-          metaDuration.innerHTML = `<span class="text-accent" style="font-weight:600;">بحاجة لتأكيد (تناقض)</span>`;
-        } else {
-          metaDuration.textContent = "بحاجة لتأكيد";
-        }
-      }
+      if (metaDuration) metaDuration.textContent = "بحاجة لتأكيد";
       if (durationCard) durationCard.style.display = "flex";
     } else {
       if (durationCard) durationCard.style.display = "none";

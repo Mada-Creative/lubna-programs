@@ -94,8 +94,8 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         num: "المسألة الرابعة",
         title: "مدة برنامج أم واعية… مراهق متوازن",
-        desc: "هناك أكثر من مدة مكتوبة في الملف ونحتاج تأكيد المدة النهائية. (الملف يذكر 3 ساعات / 180-195 دقيقة).",
-        status: "بحاجة لتأكيد"
+        desc: "تم تأكيد المدة من قبل العميلة: ساعتان تعليميتان (90 دقيقة) لكل لقاء.",
+        status: "تم التأكيد"
       },
       {
         num: "المسألة الخامسة",
@@ -243,9 +243,9 @@ document.addEventListener("DOMContentLoaded", () => {
         ]
       },
       {
-        file: "SOURCE I — برنامج الأمهات — طلاب الثانوية / ما بعد الصدمة للعائلة",
+        file: "SOURCE I — برنامج الأمهات — ما بعد الصدمة للعائلة",
         records: [
-          { name: "برنامج الأمهات — ما بعد الصدمة للعائلة (mothers-family-trauma)", status: "review" }
+          { name: "برنامج للأمهات — ما بعد الصدمة (mothers-family-trauma)", status: "review" }
         ]
       },
       {
