@@ -211,13 +211,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // Resolve Activity Type labels
     let typeLabel = "ورشة عمل";
     if (item.catalogType === "program") typeLabel = "برنامج متكامل";
-    else if (item.catalogType === "series") typeLabel = "سلسلة لقاءات";
-    else if (item.catalogType === "lecture" || (item.typeOriginal && item.typeOriginal.includes("محاضرة"))) typeLabel = "محاضرة";
+    else if (item.catalogType === "series" || item.sourceType === "series") typeLabel = "سلسلة لقاءات";
+    else if (item.catalogType === "lecture" || item.sourceType === "lecture" || (item.typeOriginal && item.typeOriginal.includes("محاضرة"))) typeLabel = "محاضرة";
     else if (item.catalogType === "legacy") typeLabel = "برنامج قديم (Legacy)";
     
     // Setup target URL based on catalogType
     let targetUrl = `program.html?id=${item.id}`;
-    if (item.catalogType === "workshop" || item.catalogType === "series" || item.catalogType === "lecture" || (item.typeOriginal && item.typeOriginal.includes("محاضرة"))) {
+    if (item.catalogType === "workshop" || item.catalogType === "series" || item.catalogType === "lecture" || item.sourceType === "lecture" || (item.typeOriginal && item.typeOriginal.includes("محاضرة"))) {
       targetUrl = `workshop.html?id=${item.id}`;
     }
     
@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const audienceTags = (item.audience || []).slice(0, 3).map(aud => `<span style="font-size: 11px; background-color: var(--color-soft); padding: 2px 8px; border-radius: 4px; color: var(--color-text); font-weight: 500;">${aud}</span>`).join(" ");
     
     // Meetings & Duration string representation
-    let meetingsText = item.meetings ? `${item.meetings} لقاءات` : null;
+    let meetingsText = item.meetings ? (typeof item.meetings === "number" ? `${item.meetings} لقاءات` : item.meetings) : null;
     let durationText = item.duration || null;
     
     let statsHTML = "";
@@ -239,6 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const imageUrl = item.image || getCategoryFallbackImage(item.category);
+    const summaryText = item.summary || item.description || "";
     
     // Programs and legacy catalog get a top 16:9 cover image, workshops get a compact header thumbnail
     if (item.catalogType === "program" || item.catalogType === "legacy") {
@@ -257,7 +258,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </div>
         <div class="card-body">
-          <p class="card-summary">${item.summary || item.description || "لا يوجد وصف متوفر للبرنامج حاليًا."}</p>
+          ${summaryText ? `<p class="card-summary">${summaryText}</p>` : ""}
           ${statsHTML}
           ${isReviewMode && reviewBadgesHTML ? `<div style="margin-top: 12px; display: flex; flex-wrap: wrap; gap: 4px;">${reviewBadgesHTML}</div>` : ""}
         </div>
@@ -283,7 +284,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </div>
         <div class="card-body">
-          <p class="card-summary">${item.summary || item.description || "لا يوجد وصف متوفر للبرنامج حاليًا."}</p>
+          ${summaryText ? `<p class="card-summary">${summaryText}</p>` : ""}
           ${statsHTML}
           ${isReviewMode && reviewBadgesHTML ? `<div style="margin-top: 12px; display: flex; flex-wrap: wrap; gap: 4px;">${reviewBadgesHTML}</div>` : ""}
         </div>

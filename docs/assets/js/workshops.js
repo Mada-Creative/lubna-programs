@@ -10,8 +10,9 @@ window.CATALOG_WORKSHOPS = [
     typeOriginal: "ورشة تفاعلية",
     title: "الاحتواء الذاتي وبناء العلاقة مع نفسي",
     topic: "علاقتي مع نفسي",
-    audience: ["شباب", "فتيات", "مراهقين"],
-    duration: "ساعتان",
+    audience: ["عامة"],
+    meetings: 6,
+    duration: "ساعتان تعليميتان لكل لقاء",
     benefits: [
       "تنمية حب الذات.",
       "تقليل جلد الذات.",
@@ -32,7 +33,8 @@ window.CATALOG_WORKSHOPS = [
     title: "دائرة العلاقات",
     topic: "علاقاتي مع نفسي – أسرتي – أصدقائي – المجتمع",
     audience: ["شباب", "فتيات"],
-    duration: "ساعتان",
+    meetings: 6,
+    duration: "ساعتان تعليميتان لكل لقاء",
     benefits: [
       "بناء علاقات متوازنة.",
       "فهم الحدود.",
@@ -149,7 +151,7 @@ window.CATALOG_WORKSHOPS = [
     id: "self-development-series",
     sourceFile: "SOURCE A",
     sourceId: "A08-A13",
-    sourceType: "workshop",
+    sourceType: "series",
     status: "published",
     category: "ورش ومحاضرات عامة",
     typeOriginal: "سلسلة — 6 لقاءات",
@@ -164,7 +166,7 @@ window.CATALOG_WORKSHOPS = [
         number: 1,
         title: "بناء الثقة بالنفس",
         audience: ["جميع الفئات"],
-        duration: "ساعتان",
+        duration: "ساعتان تعليميتان",
         benefits: ["تعزيز تقدير الذات.", "تقليل الخوف من الفشل."],
         description: "ورشة تفاعلية مع تمارين لزيادة الوعي بالقدرات ونقاط القوة."
       },
@@ -172,7 +174,7 @@ window.CATALOG_WORKSHOPS = [
         number: 2,
         title: "تحديد الأهداف وصياغة خطة حياة",
         audience: ["شباب", "فتيات", "مراهقين"],
-        duration: "ساعتان",
+        duration: "ساعتان تعليميتان",
         benefits: ["وضوح الرؤية.", "دافعية للعمل.", "إنجاز شخصي."],
         description: "تدريب عملي على SMART goals ووضع خطط قصيرة وطويلة المدى."
       },
@@ -180,7 +182,7 @@ window.CATALOG_WORKSHOPS = [
         number: 3,
         title: "إدارة الوقت والأولويات",
         audience: ["جميع الفئات"],
-        duration: "ساعتان",
+        duration: "ساعتان تعليميتان",
         benefits: ["تنظيم الحياة.", "تحسين الإنتاجية."],
         description: "ورشة عملية بأدوات تخطيط يومية وتقنيات للتغلب على التسويف."
       },
@@ -188,7 +190,7 @@ window.CATALOG_WORKSHOPS = [
         number: 4,
         title: "مهارات التواصل الفعال",
         audience: ["شباب", "فتيات"],
-        duration: "ساعتان",
+        duration: "ساعتان تعليميتان",
         benefits: ["تحسين العلاقات.", "زيادة القدرة على التعبير."],
         description: "تدريبات على لغة الجسد، الإصغاء النشط، وصياغة رسائل واضحة."
       },
@@ -196,7 +198,7 @@ window.CATALOG_WORKSHOPS = [
         number: 5,
         title: "الذكاء العاطفي وإدارة المشاعر",
         audience: ["شباب", "مراهقين"],
-        duration: "ساعتان",
+        duration: "ساعتان تعليميتان",
         benefits: ["فهم الذات.", "تحسين التفاعل مع الآخرين.", "تقليل النزاعات."],
         description: "أنشطة عملية للتعرف على المشاعر وتوظيفها بشكل إيجابي."
       },
@@ -204,7 +206,7 @@ window.CATALOG_WORKSHOPS = [
         number: 6,
         title: "حل المشكلات واتخاذ القرار",
         audience: ["جميع الفئات"],
-        duration: "ساعتان",
+        duration: "ساعتان تعليميتان",
         benefits: ["قرارات واعية.", "تقليل التردد.", "تفكير نقدي."],
         description: "ورشة تفاعلية تتضمن حالات واقعية وخطوات لاتخاذ قرارات حكيمة."
       }
@@ -323,5 +325,45 @@ window.CATALOG_WORKSHOPS = [
     benefits: [],
     priceLegacy: null,
     image: "assets/images/categories/recovery.webp"
+  },
+  {
+    id: "school-home-work-home-balance",
+    sourceFile: "SOURCE-CLIENT",
+    sourceId: "LEC-02",
+    sourceType: "lecture",
+    status: "published",
+    category: "ورش ومحاضرات عامة",
+    typeOriginal: "محاضرة",
+    title: "التوافق ما بين المدرسة والبيت (الوظيفة والبيت)",
+    topic: null,
+    audience: ["أهالي، طواقم تعليمية ومهنية"],
+    duration: "ساعتان تعليميتان",
+    benefits: [],
+    description: null,
+    goal: null,
+    mainTopics: [],
+    studentActivity: null,
+    priceLegacy: null,
+    image: "assets/images/categories/general.webp"
+  },
+  {
+    id: "holiday-parenting",
+    sourceFile: "SOURCE-CLIENT",
+    sourceId: "LEC-03",
+    sourceType: "lecture",
+    status: "published",
+    category: "ورش ومحاضرات عامة",
+    typeOriginal: "محاضرة",
+    title: "كيفية التعامل مع الأبناء بالعطلة",
+    topic: null,
+    audience: ["أهالي، طواقم تعليمية ومهنية"],
+    duration: "ساعتان تعليميتان",
+    benefits: [],
+    description: null,
+    goal: null,
+    mainTopics: [],
+    studentActivity: null,
+    priceLegacy: null,
+    image: "assets/images/categories/general.webp"
   }
 ];

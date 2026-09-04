@@ -54,14 +54,16 @@ document.addEventListener("DOMContentLoaded", () => {
   if (topicEl) {
     if (isLecture && workshop.goal) {
       topicEl.style.display = "none";
-    } else {
+    } else if (workshop.topic && workshop.topic.trim() !== "") {
       topicEl.style.display = "block";
-      topicEl.textContent = workshop.topic || "المحور: ورشة عمل تفاعلية";
+      topicEl.textContent = workshop.topic;
+    } else {
+      topicEl.style.display = "none";
     }
   }
   
   let typeLabel = "ورشة عمل";
-  if (workshop.catalogType === "series") typeLabel = "سلسلة لقاءات";
+  if (workshop.catalogType === "series" || workshop.sourceType === "series") typeLabel = "سلسلة لقاءات";
   else if (isLecture) typeLabel = "محاضرة";
   if (typeEl) typeEl.textContent = typeLabel;
 
@@ -92,9 +94,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 5. Render Meta Details
   const metaAudience = document.getElementById("metaAudience");
+  const metaMeetings = document.getElementById("metaMeetings");
   const metaDuration = document.getElementById("metaDuration");
   
   const audienceCard = document.getElementById("audienceMetaCard");
+  const meetingsCard = document.getElementById("meetingsMetaCard");
   const durationCard = document.getElementById("durationCard");
   
   // Render Audience
@@ -109,6 +113,18 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       if (audienceCard) audienceCard.style.display = "none";
     }
+  }
+
+  // Render Meetings
+  let resolvedMeetings = null;
+  if (workshop.meetings) {
+    resolvedMeetings = typeof workshop.meetings === "number" ? `${workshop.meetings} لقاءات` : workshop.meetings;
+  }
+  if (resolvedMeetings) {
+    if (metaMeetings) metaMeetings.textContent = resolvedMeetings;
+    if (meetingsCard) meetingsCard.style.display = "flex";
+  } else {
+    if (meetingsCard) meetingsCard.style.display = "none";
   }
   
   // Render Duration
@@ -148,8 +164,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // 7. Render About / Topic Section with Latin word formatting
+  const aboutSection = document.getElementById("aboutSection");
   const descEl = document.getElementById("workshopDescription");
-  if (descEl) descEl.innerHTML = wrapLatinTerms(workshop.description || "لا يوجد وصف أو محاور مفصلة متوفرة حالياً.");
+  if (aboutSection) {
+    if (workshop.description && workshop.description.trim() !== "") {
+      aboutSection.style.display = "block";
+      if (descEl) descEl.innerHTML = wrapLatinTerms(workshop.description);
+    } else {
+      aboutSection.style.display = "none";
+    }
+  }
 
   // Dynamic About Section Heading
   const aboutHeading = document.getElementById("aboutHeading");
@@ -213,8 +237,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // 9. Render Series Accordions (Only if item is a series)
   const seriesSection = document.getElementById("seriesSection");
   const accordionsContainer = document.getElementById("seriesAccordionsContainer");
+  const isSeries = workshop.catalogType === "series" || workshop.sourceType === "series" || (workshop.sessions && workshop.sessions.length > 0);
   
-  if (workshop.catalogType === "series" && seriesSection && accordionsContainer) {
+  if (isSeries && seriesSection && accordionsContainer) {
     seriesSection.style.display = "block";
     accordionsContainer.innerHTML = "";
     
@@ -346,7 +371,7 @@ document.addEventListener("DOMContentLoaded", () => {
         link.className = "related-card-link";
         link.innerHTML = `
           <h4>${w.title}</h4>
-          <p class="related-card-desc">${w.topic || w.description}</p>
+          <p class="related-card-desc">${w.topic || w.description || ""}</p>
         `;
         relatedContainer.appendChild(link);
       });
