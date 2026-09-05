@@ -222,7 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     // Render target audiences tags
-    const audienceTags = (item.audience || []).slice(0, 3).map(aud => `<span style="font-size: 11px; background-color: var(--color-soft); padding: 2px 8px; border-radius: 4px; color: var(--color-text); font-weight: 500;">${aud}</span>`).join(" ");
+    const audienceTags = (item.audience || []).slice(0, 3).map(aud => `<span class="card-audience-tag">${aud}</span>`).join(" ");
     
     // Meetings & Duration string representation
     let meetingsText = item.meetings ? (typeof item.meetings === "number" ? `${item.meetings} لقاءات` : item.meetings) : null;
@@ -241,59 +241,33 @@ document.addEventListener("DOMContentLoaded", () => {
     const imageUrl = item.image || getCategoryFallbackImage(item.category);
     const summaryText = item.summary || item.description || "";
     
-    // Programs and legacy catalog get a top 16:9 cover image, workshops get a compact header thumbnail
-    if (item.catalogType === "program" || item.catalogType === "legacy") {
-      cardEl.innerHTML = `
-        <div class="card-image-wrapper">
-          <img src="${imageUrl}" class="card-image" alt="" loading="lazy">
+    // Every catalog item (program, legacy, workshop, series, lecture) gets
+    // the same top cover-image treatment so the catalog reads as one
+    // consistent listing instead of mixing full images with small thumbnails.
+    cardEl.innerHTML = `
+      <div class="card-image-wrapper">
+        <img src="${imageUrl}" class="card-image" alt="" loading="lazy">
+      </div>
+      <div class="card-header">
+        <div class="card-meta">
+          <span class="card-type">${typeLabel}</span>
+          <span style="font-size: 11px; color: var(--color-text-muted); font-family: var(--font-headings); font-weight: 500;">${formatCategoryLabel(item.category)}</span>
         </div>
-        <div class="card-header">
-          <div class="card-meta">
-            <span class="card-type">${typeLabel}</span>
-            <span style="font-size: 11px; color: var(--color-text-muted); font-family: var(--font-headings); font-weight: 500;">${formatCategoryLabel(item.category)}</span>
-          </div>
-          <h3 class="card-title">${item.title}</h3>
-          <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px;">
-            ${audienceTags}
-          </div>
+        <h3 class="card-title">${item.title}</h3>
+        <div class="card-audience-tags">
+          ${audienceTags}
         </div>
-        <div class="card-body">
-          ${summaryText ? `<p class="card-summary">${summaryText}</p>` : ""}
-          ${statsHTML}
-          ${isReviewMode && reviewBadgesHTML ? `<div style="margin-top: 12px; display: flex; flex-wrap: wrap; gap: 4px;">${reviewBadgesHTML}</div>` : ""}
-        </div>
-        <div class="card-footer">
-          <a href="${targetUrl}" class="btn btn-secondary" style="width: 100%;">تفاصيل ومحاور الفعالية</a>
-        </div>
-      `;
-    } else {
-      cardEl.innerHTML = `
-        <div class="card-header">
-          <div style="display: flex; gap: 16px; align-items: start;">
-            <img src="${imageUrl}" class="card-thumbnail" alt="" loading="lazy">
-            <div style="flex-grow: 1;">
-              <div class="card-meta">
-                <span class="card-type">${typeLabel}</span>
-                <span style="font-size: 11px; color: var(--color-text-muted); font-family: var(--font-headings); font-weight: 500;">${formatCategoryLabel(item.category)}</span>
-              </div>
-              <h3 class="card-title">${item.title}</h3>
-            </div>
-          </div>
-          <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px;">
-            ${audienceTags}
-          </div>
-        </div>
-        <div class="card-body">
-          ${summaryText ? `<p class="card-summary">${summaryText}</p>` : ""}
-          ${statsHTML}
-          ${isReviewMode && reviewBadgesHTML ? `<div style="margin-top: 12px; display: flex; flex-wrap: wrap; gap: 4px;">${reviewBadgesHTML}</div>` : ""}
-        </div>
-        <div class="card-footer">
-          <a href="${targetUrl}" class="btn btn-secondary" style="width: 100%;">تفاصيل ومحاور الفعالية</a>
-        </div>
-      `;
-    }
-    
+      </div>
+      <div class="card-body">
+        ${summaryText ? `<p class="card-summary">${summaryText}</p>` : ""}
+        ${statsHTML}
+        ${isReviewMode && reviewBadgesHTML ? `<div style="margin-top: 12px; display: flex; flex-wrap: wrap; gap: 4px;">${reviewBadgesHTML}</div>` : ""}
+      </div>
+      <div class="card-footer">
+        <a href="${targetUrl}" class="btn btn-secondary" style="width: 100%;">تفاصيل ومحاور الفعالية</a>
+      </div>
+    `;
+
     return cardEl;
   }
   

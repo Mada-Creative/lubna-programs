@@ -24,6 +24,9 @@
   <header class="site-header">
     <div class="container navbar">
       <div class="logo">
+        <a href="index.html">
+          <img src="assets/images/logo-mark.png" alt="" class="logo-mark">
+        </a>
         <a href="index.html" class="logo-text">د. لبنى كعبية</a>
         <span class="logo-tagline">توجيه مهني • تربوي • نفسي • اجتماعي • إرشاد أسري</span>
       </div>
@@ -55,21 +58,17 @@
   </div>
 
   <main>
-    <!-- SECTION 1 — Profile Hero -->
+    <!-- SECTION 1 — Hero: the practice's own signature mark carries the
+         visual weight, beside a clear, quiet statement of the offer -->
     <section class="hero-section" aria-labelledby="hero-title">
       <div class="container hero-grid">
-        <!-- Profile Card (Digital Card Visual) -->
-        <article class="profile-card">
-          <div class="profile-image-container">
-            <div class="profile-placeholder-icon">ل ك</div>
-          </div>
-          <h2 class="profile-name" id="hero-title">د. لبنى كعبية</h2>
-          <p class="profile-title">توجيه مهني • تربوي • نفسي • اجتماعي • إرشاد أسري</p>
-        </article>
-
-        <!-- Hero Content -->
-        <div class="hero-content">
-          <h1>برامج، ورشات ومحاضرات للمؤسسات والمجتمع</h1>
+        <div class="hero-content" data-reveal>
+          <p class="hero-eyebrow">
+            <span class="hero-name">د. لبنى كعبية</span>
+            <span class="hero-eyebrow-divider" aria-hidden="true"></span>
+            <span class="hero-credentials">توجيه مهني • تربوي • نفسي • اجتماعي • إرشاد أسري</span>
+          </p>
+          <h1 id="hero-title">برامج، ورشات ومحاضرات للمؤسسات والمجتمع</h1>
           <p class="hero-tagline">دليل البرامج والورشات والمحاضرات</p>
           <p class="hero-description">
             مجموعة من البرامج والورشات الموجهة للطلاب، الأهالي، النساء، الشباب والطواقم المهنية، مع إمكانية ملاءمة البرامج بحسب الفئة واحتياجات المؤسسة.
@@ -80,86 +79,96 @@
             <a href="#" class="btn btn-accent" id="heroWhatsappBtn">WhatsApp</a>
           </div>
         </div>
+        <div class="hero-visual" data-reveal>
+          <img src="assets/images/logo-signature.png" alt="د. لبنى كعبية" class="hero-signature">
+        </div>
       </div>
     </section>
 
-    <!-- SECTION 2 — Choose by Category -->
+    <!-- SECTION 2 — Browse by audience: the six real, editorially-sourced
+         category photographs as one filmstrip (see IMAGE-SOURCES.md) -->
     <section class="categories-section" aria-labelledby="categories-heading">
       <div class="container">
-        <!-- Visual Category Grid -->
-        <div class="visual-category-grid" id="visualCategoryGrid">
-          <div class="category-card" data-category="students">
+        <h2 id="categories-heading" data-reveal>اختاروا حسب الفئة المستهدفة</h2>
+        <p data-reveal>كل فئة تفتح مجموعة البرامج والورشات المصممة لاحتياجاتها الخاصة.</p>
+
+        <!-- Visual Category Index (horizontally scrolling on every viewport) -->
+        <div class="visual-category-grid" id="visualCategoryGrid" data-reveal role="group" aria-label="استعراض الفئات المستهدفة">
+          <button type="button" class="category-card" data-category="students">
             <img src="assets/images/categories/students.webp" alt="المدارس والطلاب" loading="lazy">
             <div class="category-card-content">
               <h3>المدارس والطلاب</h3>
               <p>توجيه أكاديمي ومهني وبناء مهارات التخطيط للمستقبل.</p>
             </div>
-          </div>
-          <div class="category-card" data-category="parents">
+          </button>
+          <button type="button" class="category-card" data-category="parents">
             <img src="assets/images/categories/parents.webp" alt="الأهالي والأسرة" loading="lazy">
             <div class="category-card-content">
               <h3>الأهالي والأسرة</h3>
               <p>إرشاد أسري ومرافقة أولياء الأمور للتعامل السليم مع المراهقة.</p>
             </div>
-          </div>
-          <div class="category-card" data-category="women">
+          </button>
+          <button type="button" class="category-card" data-category="women">
             <img src="assets/images/categories/women.webp" alt="النساء والتمكين" loading="lazy">
             <div class="category-card-content">
               <h3>النساء والتمكين</h3>
               <p>بناء تقدير الذات والقوة الداخلية والتكيف النفسي والاجتماعي.</p>
             </div>
-          </div>
-          <div class="category-card" data-category="youth">
+          </button>
+          <button type="button" class="category-card" data-category="youth">
             <img src="assets/images/categories/youth.webp" alt="الشباب والفتيات (طلاب إعدادية وثانوية) – مراكز" loading="lazy">
             <div class="category-card-content">
               <h3>الشباب والفتيات (طلاب إعدادية وثانوية) – مراكز</h3>
               <p>تمكين جيل الشباب وتطوير الذات وتنمية الدافعية والإنجاز.</p>
             </div>
-          </div>
-          <div class="category-card" data-category="recovery">
+          </button>
+          <button type="button" class="category-card" data-category="recovery">
             <img src="assets/images/categories/recovery.webp" alt="الإدمان والتعافي" loading="lazy">
             <div class="category-card-content">
               <h3>الإدمان والتعافي</h3>
               <p>حماية البيئة المنزلية ومساندة أسر المتعاطين والمتعافين.</p>
             </div>
-          </div>
-          <div class="category-card" data-category="staff">
+          </button>
+          <button type="button" class="category-card" data-category="staff">
             <img src="assets/images/categories/staff.webp" alt="الطواقم المهنية" loading="lazy">
             <div class="category-card-content">
               <h3>الطواقم المهنية</h3>
               <p>تدريب الكوادر التدريسية للوقاية من الاحتراق المهني وإدارة الصف.</p>
             </div>
-          </div>
-        </div>
-
-        <!-- Category chips container -->
-        <div class="categories-container" id="categoryChips" role="group" aria-label="فئات الجمهور المستهدف">
-          <button class="category-chip active" data-category="all">جميع البرامج والورش</button>
-          <button class="category-chip" data-category="students">المدارس والطلاب</button>
-          <button class="category-chip" data-category="parents">الأهالي والأسرة</button>
-          <button class="category-chip" data-category="women">النساء والتمكين</button>
-          <button class="category-chip" data-category="youth">الشباب والفتيات (طلاب إعدادية وثانوية) – مراكز</button>
-          <button class="category-chip" data-category="recovery">الإدمان والتعافي</button>
-          <button class="category-chip" data-category="general-workshops">ورش ومحاضرات عامة</button>
-          <button class="category-chip" data-category="staff">الطواقم المهنية</button>
+          </button>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 3 & 4 — Catalog Filter & List Grid -->
+    <!-- SECTION 3 & 4 — Catalog: one filtering toolbar (search + category
+         chips + type) directly above the listing -->
     <section class="catalog-section" id="catalog" aria-labelledby="catalog-heading">
       <div class="container">
         <div class="catalog-header">
           <div>
             <h2 id="catalog-heading">الكتالوج الشامل</h2>
           </div>
-          
+
           <!-- Search Box -->
           <div class="search-container">
             <span class="search-icon" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             </span>
             <input type="search" class="search-input" id="searchInput" placeholder="ابحث عن برنامج، ورشة، موضوع أو فئة..." aria-label="ابحث في الكتالوج">
+          </div>
+        </div>
+
+        <div class="catalog-toolbar">
+          <!-- Category chips container -->
+          <div class="categories-container" id="categoryChips" role="group" aria-label="فئات الجمهور المستهدف">
+            <button class="category-chip active" data-category="all">جميع البرامج والورش</button>
+            <button class="category-chip" data-category="students">المدارس والطلاب</button>
+            <button class="category-chip" data-category="parents">الأهالي والأسرة</button>
+            <button class="category-chip" data-category="women">النساء والتمكين</button>
+            <button class="category-chip" data-category="youth">الشباب والفتيات (طلاب إعدادية وثانوية) – مراكز</button>
+            <button class="category-chip" data-category="recovery">الإدمان والتعافي</button>
+            <button class="category-chip" data-category="general-workshops">ورش ومحاضرات عامة</button>
+            <button class="category-chip" data-category="staff">الطواقم المهنية</button>
           </div>
 
           <!-- Type filter dropdown -->
@@ -184,19 +193,19 @@
     </section>
 
     <!-- SECTION 5 — Contact / Inquiry -->
-    <section class="catalog-section" id="contact" style="background-color: var(--color-soft); padding: 80px 0;" aria-labelledby="contact-heading">
+    <section class="catalog-section contact-section" id="contact" aria-labelledby="contact-heading">
       <div class="container">
         <div class="contact-section-grid">
           <!-- Right side: Info -->
-          <div class="contact-info-block">
-            <h2 id="contact-heading" style="margin-bottom: 16px; font-size: 2.2rem; color: var(--color-primary-dark); font-family: var(--font-headings);">هل وجدتم البرنامج المناسب لمؤسستكم؟</h2>
-            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-text-muted);">
+          <div class="contact-info-block" data-reveal>
+            <h2 id="contact-heading" class="contact-info-heading">هل وجدتم البرنامج المناسب لمؤسستكم؟</h2>
+            <p>
               يمكن إرسال التفاصيل مباشرة، وسنتواصل معكم بخصوص البرنامج وملاءمته للفئة المستهدفة واحتياجات المؤسسة.
             </p>
           </div>
-          
+
           <!-- Left side: Form -->
-          <div class="contact-form-container">
+          <div class="contact-form-container" data-reveal>
             <form id="contactForm" method="POST" class="contact-form" novalidate>
               <!-- Honeypot -->
               <input type="text" name="_honey" style="display:none">
@@ -211,18 +220,18 @@
 
               <div class="form-row">
                 <div class="form-group">
-                  <label for="formName">الاسم الكامل <span style="color: var(--color-accent);">*</span></label>
+                  <label for="formName">الاسم الكامل <span class="form-required">*</span></label>
                   <input type="text" id="formName" name="الاسم" placeholder="الاسم الكامل" class="form-control" required>
                 </div>
                 <div class="form-group">
-                  <label for="formInstitution">اسم المدرسة / المؤسسة <span style="color: var(--color-accent);">*</span></label>
+                  <label for="formInstitution">اسم المدرسة / المؤسسة <span class="form-required">*</span></label>
                   <input type="text" id="formInstitution" name="المؤسسة" placeholder="اسم المدرسة أو المؤسسة" class="form-control" required>
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="form-group">
-                  <label for="formPhone">رقم الهاتف <span style="color: var(--color-accent);">*</span></label>
+                  <label for="formPhone">رقم الهاتف <span class="form-required">*</span></label>
                   <input type="tel" id="formPhone" name="الهاتف" placeholder="رقم الهاتف" class="form-control" required>
                 </div>
                 <div class="form-group">
@@ -243,7 +252,7 @@
                 <textarea id="formMessage" name="التفاصيل" rows="4" placeholder="اكتبوا أي تفاصيل أو استفسار إضافي..." class="form-control"></textarea>
               </div>
 
-              <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px;">إرسال الطلب</button>
+              <button type="submit" class="btn btn-primary form-submit">إرسال الطلب</button>
               
               <div id="formStatus" class="form-status"></div>
             </form>
@@ -269,5 +278,6 @@
   <script src="assets/js/legacy-programs.js"></script>
   <script src="assets/js/filters.js"></script>
   <script src="assets/js/app.js"></script>
+  <script src="assets/js/motion.js"></script>
 </body>
 </html>
